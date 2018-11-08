@@ -10,6 +10,8 @@
 
         <link rel="icon" href="static/img/icon.png" type="image/png" />
 
+        <script src="https://checkout.stripe.com/checkout.js"></script>
+
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -258,7 +260,7 @@
                                     up to 10 events
                                 </p>
                                 <hr/>
-                                <button class="button is-link" data-cb-type="checkout" data-cb-plan-id="experiment">Submit Tagging Request</button>
+                                <button class="button is-link" id="payment_10">Submit Tagging Request</button>
                             </div>
                         </div>
                     </div>
@@ -273,7 +275,7 @@
                                     up to 25 events
                                 </p>
                                 <hr>
-                                <button class="button is-primary" data-cb-type="checkout" data-cb-plan-id="hit_basic">Submit Tagging Request</button>
+                                <button class="button is-primary" id="payment_20">Submit Tagging Request</button>
                             </div>
                         </div>
                     </div>
@@ -288,7 +290,7 @@
                                     up to 30 events
                                 </p>
                                 <hr>
-                                <button class="button is-info" data-cb-type="checkout" data-cb-plan-id="hit_heavy">Submit Tagging Request</button>
+                                <button class="button is-info" id="payment_30">Submit Tagging Request</button>
                             </div>
                         </div>
                     </div>
@@ -346,5 +348,55 @@
              box-shadow: none;
          }
         </style>
+
+        <script>
+         var handler = StripeCheckout.configure({
+             key: 'pk_test_z8BDRCYX5f5WP9ZJQ31MFmlw',
+             image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+             locale: 'auto',
+             token: function(token) {
+                 // You can access the token ID with `token.id`.
+                 // Get the token ID to your server-side code for use.
+             }
+         });
+
+         document.getElementById('payment_10').addEventListener('click', function(e) {
+             // Open Checkout with further options:
+             handler.open({
+                 name: 'Point&Tag',
+                 description: '10 Events',
+                 image: 'static/img/icon.png',
+                 amount: 1000
+             });
+             e.preventDefault();
+         });
+
+         document.getElementById('payment_20').addEventListener('click', function(e) {
+             // Open Checkout with further options:
+             handler.open({
+                 name: 'Point&Tag',
+                 description: '25 Events',
+                 image: 'static/img/icon.png',
+                 amount: 2000
+             });
+             e.preventDefault();
+         });
+
+         document.getElementById('payment_30').addEventListener('click', function(e) {
+             // Open Checkout with further options:
+             handler.open({
+                 name: 'Point&Tag',
+                 description: '40 Events',
+                 image: 'static/img/icon.png',
+                 amount: 3000
+             });
+             e.preventDefault();
+         });
+
+         // Close Checkout on page navigation:
+         window.addEventListener('popstate', function() {
+             handler.close();
+         });
+        </script>
     </body>
 </html>
