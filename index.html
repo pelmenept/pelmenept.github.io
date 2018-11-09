@@ -418,9 +418,10 @@
              strings: ["GA", "Mixpanel", "Adobe Analytics", "Webtrends", "GA"],
              typeSpeed: 80,
              backSpeed: 40,
-             startDelay: 3000,
+             /* startDelay: 3000, */
              backDelay: 1500,
-             loop: false,
+             loop: ["GA", "Mixpanel", "Adobe Analytics", "Webtrends", "GA"],
+             loopCount: 2,
              showCursor:  true,
              cursorChar: "|",
              smartBackspace: true
