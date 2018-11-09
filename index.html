@@ -11,6 +11,7 @@
         <link rel="icon" href="static/img/icon.png" type="image/png" />
 
         <script src="https://checkout.stripe.com/checkout.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
 
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -43,7 +44,7 @@
                     <div class="columns is-centered">
                         <div class="column is-8">
                             <h1 class="is-1 title is-spaced">
-                                Event tracking for <span class="has-text-info">busy</span> people
+                                <span id="text_rotate">GA</span> Event tracking for <span class="has-text-info">busy</span> people
                             </h1>
                             <h2 class="is-4 subtitle">
                                 Track events on your website by simply pointing them out.
@@ -412,6 +413,21 @@
          window.addEventListener('popstate', function() {
              handler.close();
          });
+
+         let options = {
+             strings: ["GA", "Mixpanel", "Adobe Analytics", "Webtrends", "GA"],
+             typeSpeed: 80,
+             backSpeed: 40,
+             startDelay: 3000,
+             backDelay: 1500,
+             loop: false,
+             showCursor:  true,
+             cursorChar: "|",
+             smartBackspace: true
+         }
+
+         let typed = new Typed("#text_rotate", options);
+
         </script>
     </body>
 </html>
